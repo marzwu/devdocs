@@ -1,12 +1,10 @@
 module Docs
   class ActionScript < UrlScraper
-    include StubRootPage
-
     self.name = 'ActionScript 3.0'
     self.slug = 'actionscript_3.0'
     self.type = 'action_script'
     self.version = '3.0'
-    self.base_url = "http://help.adobe.com/zh_CN/FlashPlatform/reference/action_script/3/"
+    self.base_url = "http://help.adobe.com/zh_CN/FlashPlatform/reference/actionscript/3/"
 
     html_filters.push 'action_script/clean_html', 'action_script/entries', 'title'
     text_filters.push 'action_script/clean_urls'
@@ -24,17 +22,9 @@ module Docs
     options[:skip] = %w(ng.html)
 
     options[:attribution] = <<-HTML
-      &copy; 2010&ndash;2015 Google, Inc.<br>
+      &copy; 2010&ndash;2015 Adobe Systems Incorporated.<br>
       Licensed under the Creative Commons Attribution License 3.0.
     HTML
 
-    private
-
-    def root_page_body
-      require 'capybara'
-      Capybara.current_driver = :selenium
-      Capybara.visit("https://code.angularjs.org/#{self.class.version}/docs/api")
-      Capybara.find('.side-navigation')['innerHTML']
-    end
   end
 end
