@@ -25,7 +25,7 @@ class DocsCLI < Thor
   option :debug, type: :boolean
   def page(name, path = '')
     unless path.empty? || path.start_with?('/')
-      return puts 'ERROR: [path] must be an absolute path.'
+      return puts "ERROR: [path] must be an absolute path. path is #{path}"
     end
 
     Docs.install_report :store if options[:verbose]
