@@ -1,10 +1,13 @@
 module Docs
   class ActionScript < UrlScraper
+  # class ActionScript < FileScraper
     self.name = 'ActionScript 3.0'
     self.slug = 'actionscript_3.0'
     self.type = 'action_script'
     self.version = '3.0'
+    # self.dir = '/Users/marz/Documents/git/devdocs/public/docs/actionscript_3.0'
     self.base_url = "http://help.adobe.com/zh_CN/FlashPlatform/reference/actionscript/3/"
+    # self.root_path = 'index.html'
 
     html_filters.push 'action_script/clean_html', 'action_script/entries', 'title'
     text_filters.push 'action_script/clean_urls'
